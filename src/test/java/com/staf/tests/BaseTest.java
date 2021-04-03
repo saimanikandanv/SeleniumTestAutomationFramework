@@ -18,8 +18,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void startTest()
-    {
+    public void startTest() throws Exception {
         DriverHelper.initDriver();
     }
 

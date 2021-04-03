@@ -5,8 +5,10 @@ package com.staf.constants;
  */
 public final class FrameworkConstants {
 
-    private static final String CHROMEDRIVERPATH = System.getProperty("user.dir")+"/src/test/resources/browserExecutables/chromedriver.exe";
+    private static final String RESOURCESPATH=System.getProperty("user.dir")+"/src/test/resources";
 
+    private static final String CHROMEDRIVERPATH =RESOURCESPATH+"/browserExecutables/chromedriver.exe";
+    private static final String CONFIGFILEPATH = RESOURCESPATH+"/config/config.properties";
     private FrameworkConstants(){
 
     }
@@ -14,6 +16,11 @@ public final class FrameworkConstants {
     public static String getChromeDriverPath()
     {
         return CHROMEDRIVERPATH;
+    }
+
+    public static String getConfigFilePath()
+    {
+        return CONFIGFILEPATH;
     }
 
 

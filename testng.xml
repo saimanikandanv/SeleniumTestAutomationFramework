@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/SeleniumTestAutomationFramework" thread-count="3" parallel="methods">
+    <classes>
+        <class name="com.staf.tests.HomePageTest">
+            <methods>
+                <include name="searchTest1"/>
+                <include name="searchTest2"/>
+            </methods>
+        </class>
+        <class name="com.staf.tests.SearchPageTest">
+            <methods>
+                <include name="searchTest3"/>
+                <include name="searchTest4"/>
+            </methods>
+        </class>
+    </classes>
+</test>
+</suite>

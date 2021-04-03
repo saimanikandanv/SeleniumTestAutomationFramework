@@ -1,35 +1,36 @@
 package com.staf.driver;
 
 import com.staf.constants.FrameworkConstants;
-import org.openqa.selenium.WebDriver;
+import com.staf.util.Utils;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.Objects;
 
 /**
  * Created by Saimanikandan V on 03-04-2021
  */
-public class DriverHelper {
+public final class DriverHelper {
 
-    public static WebDriver driver;
+    private DriverHelper(){
+
+    }
 
 
-    public static void initDriver()
-    {
-        if(Objects.isNull(driver))
+    public static void initDriver() throws Exception {
+        if(Objects.isNull(DriverManager.getWebDriver()))
         {
             System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
-            driver=new ChromeDriver();
-            driver.manage().window().maximize();
-            driver.get("http://www.google.com");
+            DriverManager.setWebDriver(new ChromeDriver());
+            DriverManager.getWebDriver().manage().window().maximize();
+            DriverManager.getWebDriver().get(Utils.getValue("url"));
         }
     }
 
     public static void quitDriver()
     {
-        if(Objects.nonNull(driver))
+        if(Objects.nonNull(DriverManager.getWebDriver()))
         {
-            driver.quit();
+            DriverManager.getWebDriver().quit();
+            DriverManager.unloadWebDriver();
         }
     }
 
