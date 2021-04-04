@@ -32,7 +32,7 @@ public class Utils {
         }
     }
 
-    public static String getValue(String key) throws Exception {
+    public static String readPropertyValue(String key) throws Exception {
        if(Objects.isNull(property.getProperty(key)) || Objects.isNull(key))
         {
             throw new Exception("The entered key is not found in config.properties");

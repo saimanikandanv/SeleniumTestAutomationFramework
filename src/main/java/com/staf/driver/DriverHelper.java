@@ -1,6 +1,7 @@
 package com.staf.driver;
 
 import com.staf.constants.FrameworkConstants;
+import com.staf.enums.PropertyFileEnums;
 import com.staf.util.Utils;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Objects;
@@ -21,7 +22,7 @@ public final class DriverHelper {
             System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
             DriverManager.setWebDriver(new ChromeDriver());
             DriverManager.getWebDriver().manage().window().maximize();
-            DriverManager.getWebDriver().get(Utils.getValue("url"));
+            DriverManager.getWebDriver().get(Utils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
         }
     }
 
