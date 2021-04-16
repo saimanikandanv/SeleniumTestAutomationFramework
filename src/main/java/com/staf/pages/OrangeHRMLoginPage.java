@@ -1,8 +1,10 @@
 package com.staf.pages;
 
+import com.staf.driver.DriverManager;
 import com.staf.enums.ExplicitWaitConditions;
 import com.staf.util.SeleniumFactories;
 import org.openqa.selenium.By;
+import static org.assertj.core.api.Assertions.*;
 
 
 
@@ -15,11 +17,12 @@ public class OrangeHRMLoginPage extends BasePage {
     private static final By txtPassword=By.id("txtPassword");
     private static final By btnLogin=By.id("btnLogin");
 
+
     public OrangeHRMHomePage loginApp(String username, String password) throws Exception {
         SeleniumFactories.performExplicitWait(ExplicitWaitConditions.ELEMENTTOBECLICKABLE,txtUserName);
-        sendKeys(txtUserName,username);
-        sendKeys(txtPassword,password);
-        click(btnLogin);
+        sendKeys(txtUserName,"username",username);
+        sendKeys(txtPassword,"password",password);
+        click(btnLogin,"Login");
         Thread.sleep(3000);
         return new OrangeHRMHomePage();
     }
