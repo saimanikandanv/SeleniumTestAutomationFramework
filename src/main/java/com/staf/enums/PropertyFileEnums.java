@@ -6,8 +6,6 @@ package com.staf.enums;
 public enum PropertyFileEnums {
 
     URL,
-    USERNAME,
-    PASSWORD,
     BROWSER,
     EXPLICITWAITTIME
 }

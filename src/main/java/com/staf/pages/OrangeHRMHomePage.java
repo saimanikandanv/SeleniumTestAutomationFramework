@@ -15,9 +15,10 @@ public class OrangeHRMHomePage extends BasePage{
     private static final By homePageTitle=By.xpath("//ul[@id='mainMenuFirstLevelUnorderedList']");
     private static final By welcomeLink=By.id("welcome");
     private static final By linkLogOut=By.xpath("//a[text()='Logout']");
+    private static final By linkApplyleave=By.xpath("//span[contains(text(),'Apply Leave')]//parent::a");
 
-    public OrangeHRMHomePage checkLogin()
-    {
+    public OrangeHRMHomePage checkLogin() throws InterruptedException {
+        Thread.sleep(5000);
         if(DriverManager.getWebDriver().findElement(homePageTitle).isDisplayed()){
             ExtentLogger.passWithScreen("Login Success");
         }
@@ -30,7 +31,11 @@ public class OrangeHRMHomePage extends BasePage{
         click(linkLogOut, "Logout");
         Thread.sleep(2000);
         return new OrangeHRMLoginPage();
+    }
 
-
+    public OrangeHRMApplyLeavePage applyLeave() throws Exception {
+        SeleniumFactories.performExplicitWait(ExplicitWaitConditions.ELEMENTTOBECLICKABLE,linkApplyleave);
+        click(linkApplyleave,"Apply Leave");
+        return new OrangeHRMApplyLeavePage();
     }
 }

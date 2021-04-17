@@ -3,6 +3,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.staf.constants.FrameworkConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,12 +20,13 @@ public final class ExtentReporting {
 
     private static ExtentReports reports;
     public static ExtentTest test;
+    private static  ExtentSparkReporter reporter;
 
     public static void setupReports()
     {
         if(Objects.isNull(reports)){
             reports=new ExtentReports();
-            ExtentSparkReporter reporter=new ExtentSparkReporter("index.html");
+            reporter=new ExtentSparkReporter(FrameworkConstants.getExtentReportFilePath());
             reports.attachReporter(reporter);
             reporter.config().setTheme(Theme.DARK);
             reporter.config().setDocumentTitle("Automation report");
@@ -43,10 +45,7 @@ public final class ExtentReporting {
         {
             reports.flush();
         }
-        Desktop.getDesktop().browse(new File("index.html").toURI());
+        Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilePath()).toURI());
 
     }
-
-
-
 }
