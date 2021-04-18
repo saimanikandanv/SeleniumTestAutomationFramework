@@ -5,7 +5,6 @@ import com.staf.driver.DriverManager;
 import com.staf.enums.PropertyFileEnums;
 import com.staf.pages.OrangeHRMHomePage;
 import com.staf.pages.OrangeHRMLoginPage;
-import com.staf.reports.ExtentReporting;
 import com.staf.util.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

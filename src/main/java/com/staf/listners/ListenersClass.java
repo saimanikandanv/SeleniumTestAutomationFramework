@@ -3,9 +3,12 @@ package com.staf.listners;
 import com.staf.enums.PropertyFileEnums;
 import com.staf.reports.ExtentLogger;
 import com.staf.reports.ExtentReporting;
-import org.testng.*;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
 import java.io.IOException;
-import java.util.Locale;
 
 import static com.staf.util.Utils.readPropertyValue;
 
@@ -48,7 +51,7 @@ public class ListenersClass implements ITestListener, ISuiteListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.fail(result.getMethod().getMethodName() +" is failed");
-
+        ExtentLogger.fail(result.getThrowable().toString());
     }
 
     @Override

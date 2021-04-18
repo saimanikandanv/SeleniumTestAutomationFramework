@@ -1,7 +1,6 @@
 package com.staf.constants;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Saimanikandan V on 03-04-2021
  */
-public final class FrameworkConstants {
+public class FrameworkConstants {
 
     private static final String RESOURCESPATH=System.getProperty("user.dir")+"/src/test/resources";
 
