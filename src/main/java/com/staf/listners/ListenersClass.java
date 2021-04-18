@@ -2,12 +2,11 @@ package com.staf.listners;
 
 import com.staf.enums.PropertyFileEnums;
 import com.staf.reports.ExtentLogger;
-import com.staf.reports.ExtentReporting;
+import com.staf.reports.*;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import java.io.IOException;
 
 import static com.staf.util.Utils.readPropertyValue;

@@ -1,10 +1,9 @@
 package com.staf.reports;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.staf.constants.FrameworkConstants;
+import com.staf.constants.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +17,6 @@ public final class ExtentReporting {
     private ExtentReporting(){}
 
     private static ExtentReports reports;
-    public static ExtentTest test;
     private static ExtentSparkReporter reporter;
 
     public static void setupReports()
