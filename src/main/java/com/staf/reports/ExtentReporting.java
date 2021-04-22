@@ -42,6 +42,7 @@ public final class ExtentReporting {
         {
             reports.flush();
         }
+        ExtentTestManager.removeExtentTest();
         Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilePath()).toURI());
 
     }

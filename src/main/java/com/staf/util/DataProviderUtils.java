@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public final class DataProviderUtils {
 
-    @DataProvider
+    @DataProvider(parallel = true)
     public static Object[] getData(Method m) throws IOException {
         String methodName=m.getName();
         List<Map<String,String>> list= ExcelUtils.getTestDetails(FrameworkConstants.getIterationSheetName());

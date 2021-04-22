@@ -1,5 +1,7 @@
 package com.staf.listeners;
 
+import com.staf.util.PropertyUtils;
+import lombok.SneakyThrows;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
@@ -10,10 +12,17 @@ public class RetryListener implements IRetryAnalyzer {
 
     private int count=0;
     private int retries=1;
+    boolean value=false;
+
+    @SneakyThrows
     @Override
     public boolean retry(ITestResult iTestResult) {
-        boolean value= count<retries;
-        count++;
+
+        if(PropertyUtils.readPropertyValue("retryfailedtest").equalsIgnoreCase("yes"))
+        {
+            value= count<retries;
+            count++;
+        }
         return value;
     }
 }

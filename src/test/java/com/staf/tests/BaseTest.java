@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * Created by Saimanikandan V on 03-04-2021
@@ -26,8 +27,9 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void startTest(Method m) throws Exception {
-        DriverHelper.initDriver();
+    public void startTest(Object[] data) throws Exception {
+        Map<String,String> map=(Map<String,String>)data[0];
+        DriverHelper.initDriver(map.get("browser"));
     }
 
     @AfterMethod

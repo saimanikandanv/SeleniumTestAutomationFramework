@@ -9,14 +9,8 @@
     </listeners>
     <test verbose="2" preserve-order="true" name="Test" thread-count="2" parallel="methods">
         <classes>
-            <class name="com.staf.tests.OrangeHRMLoginTest">
-                <methods><include name="loginTest"/>
-                </methods>
-            </class>
-            <class name="com.staf.tests.OrangeHRMHomePageTest">
-                <methods><include name="applyLeave"/>
-                </methods>
-            </class>
+            <class name="com.staf.tests.OrangeHRMLoginTest"/>
+            <class name="com.staf.tests.OrangeHRMHomePageTest"/>
         </classes>
     </test>
 </suite>

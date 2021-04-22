@@ -4,7 +4,9 @@ import com.staf.constants.*;
 import com.staf.enums.PropertyFileEnums;
 import com.staf.util.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.Objects;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static com.staf.util.PropertyUtils.readPropertyValue;
 
@@ -18,19 +20,23 @@ public final class DriverHelper {
     }
 
 
-    public static void initDriver() throws Exception {
+    public static void initDriver(String browser) throws Exception {
         if(Objects.isNull(DriverManager.getWebDriver()))
         {
-            if(readPropertyValue(PropertyFileEnums.BROWSER.name().toLowerCase()).equalsIgnoreCase("chrome"))
+            if(browser.equalsIgnoreCase("chrome"))
             {
-                System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
+//                System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
+                WebDriverManager.chromedriver().setup();
                 DriverManager.setWebDriver(new ChromeDriver());
                 DriverManager.getWebDriver().manage().window().maximize();
                 DriverManager.getWebDriver().get(PropertyUtils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
             }
-            else if(readPropertyValue(PropertyFileEnums.BROWSER.name().toLowerCase()).equalsIgnoreCase("firefox"))
+            else if(browser.equalsIgnoreCase("firefox"))
             {
-                    //code to open firefox
+                WebDriverManager.firefoxdriver().setup();
+                DriverManager.setWebDriver(new FirefoxDriver());
+                DriverManager.getWebDriver().manage().window().maximize();
+                DriverManager.getWebDriver().get(PropertyUtils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
             }
             else
             {
