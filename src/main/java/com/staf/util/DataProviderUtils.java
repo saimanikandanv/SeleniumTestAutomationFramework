@@ -1,5 +1,6 @@
 package com.staf.util;
 
+import com.staf.constants.FrameworkConstants;
 import org.testng.annotations.DataProvider;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -15,7 +16,7 @@ public final class DataProviderUtils {
     @DataProvider
     public static Object[] getData(Method m) throws IOException {
         String methodName=m.getName();
-        List<Map<String,String>> list= ExcelUtils.getTestDetails("Data");
+        List<Map<String,String>> list= ExcelUtils.getTestDetails(FrameworkConstants.getIterationSheetName());
         List<Map<String,String>> runList=new ArrayList<>();
         for(int i=0;i<list.size();i++)
         {
@@ -23,7 +24,6 @@ public final class DataProviderUtils {
                     runList.add(list.get(i));
             }
         }
-        list.removeAll(runList);
         return runList.toArray();
     }
 }

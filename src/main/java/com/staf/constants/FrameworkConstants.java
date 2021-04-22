@@ -18,6 +18,18 @@ public final class FrameworkConstants {
     private static String EXTENTREPORTSFILEPATH="";
     private static final String EXCELTESTDATAPATH=RESOURCESPATH+"/TestData/TestData.xlsx";
 
+    private static final String RUNMANAGERSHEETNAME="RunManager";
+    private static final String ITERATIONSHEETNAME="Data";
+
+    public static String getRunManagerSheetName() {
+        return RUNMANAGERSHEETNAME;
+    }
+
+    public static String getIterationSheetName() {
+        return ITERATIONSHEETNAME;
+    }
+
+
     public static String getExcelTestDataPath() {
         return EXCELTESTDATAPATH;
     }

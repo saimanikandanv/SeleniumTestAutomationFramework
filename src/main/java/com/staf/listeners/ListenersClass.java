@@ -1,4 +1,4 @@
-package com.staf.listners;
+package com.staf.listeners;
 
 import com.staf.enums.PropertyFileEnums;
 import com.staf.reports.ExtentLogger;

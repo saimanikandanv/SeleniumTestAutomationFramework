@@ -1,7 +1,7 @@
-package com.staf.listners;
+package com.staf.listeners;
 
+import com.staf.constants.FrameworkConstants;
 import com.staf.util.ExcelUtils;
-import lombok.SneakyThrows;
 import org.testng.IMethodInstance;
 import org.testng.IMethodInterceptor;
 import org.testng.ITestContext;
@@ -20,7 +20,7 @@ public class MethodInterceptor implements IMethodInterceptor {
 
         List<Map<String,String>> list= null;
         try {
-            list = ExcelUtils.getTestDetails("RunManager");
+            list = ExcelUtils.getTestDetails(FrameworkConstants.getRunManagerSheetName());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,19 +30,15 @@ public class MethodInterceptor implements IMethodInterceptor {
         {
             for(int j=0;j<list.size();j++)
             {
-                if(methods.get(i).getMethod().getMethodName().equalsIgnoreCase(list.get(j).get("TestName")))
+                if(methods.get(i).getMethod().getMethodName().equalsIgnoreCase(list.get(j).get("TestName")) && list.get(j).get("RunFlag").equalsIgnoreCase("yes"))
                 {
-                    if(list.get(j).get("RunFlag").equalsIgnoreCase("yes"))
-                    {
-                        methods.get(i).getMethod().setDescription((list.get(j).get("TestDescription")));
-                        methods.get(i).getMethod().setInvocationCount(Integer.parseInt(list.get(j).get("count")));
-                        methods.get(i).getMethod().setPriority(Integer.parseInt(list.get(j).get("priority")));
-                        result.add(methods.get(i));
-                    }
+                    methods.get(i).getMethod().setDescription((list.get(j).get("TestDescription")));
+                    methods.get(i).getMethod().setInvocationCount(Integer.parseInt(list.get(j).get("count")));
+                    methods.get(i).getMethod().setPriority(Integer.parseInt(list.get(j).get("priority")));
+                    result.add(methods.get(i));
                 }
             }
         }
-
         return result;
     }
 }

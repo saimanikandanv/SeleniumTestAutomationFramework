@@ -1,10 +1,10 @@
 package com.staf.tests;
 
+import com.staf.listeners.RetryListener;
 import com.staf.pages.OrangeHRMApplyLeavePage;
 import com.staf.pages.OrangeHRMHomePage;
 import com.staf.pages.OrangeHRMLoginPage;
 import com.staf.util.DataProviderUtils;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public final class OrangeHRMHomePageTest extends  BaseTest{
 
-    @Test(dataProvider = "getData", dataProviderClass = DataProviderUtils.class)
+    @Test
     public void applyLeave(Map<String,String> data) throws Exception {
         OrangeHRMLoginPage loginPage=new OrangeHRMLoginPage();
         loginPage.loginApp(data.get("username"), data.get("password"));
