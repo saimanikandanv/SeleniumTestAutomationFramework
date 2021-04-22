@@ -3,8 +3,9 @@
 <suite name="All Test Suite">
     <listeners>
         <listener class-name="com.staf.listners.ListenersClass" />
+        <listener class-name="com.staf.listners.MethodInterceptor" />
     </listeners>
-    <test verbose="2" preserve-order="true" name="D:/SeleniumTestAutomationFramework" thread-count="2" parallel="methods">
+    <test verbose="2" preserve-order="true" name="Test" thread-count="2" parallel="methods">
         <classes>
             <class name="com.staf.tests.OrangeHRMLoginTest">
                 <methods><include name="loginTest"/>

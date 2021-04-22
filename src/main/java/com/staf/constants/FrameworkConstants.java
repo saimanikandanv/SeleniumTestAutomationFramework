@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Saimanikandan V on 03-04-2021
  */
-public class FrameworkConstants {
+public final class FrameworkConstants {
 
     private static final String RESOURCESPATH=System.getProperty("user.dir")+"/src/test/resources";
 
@@ -16,6 +16,14 @@ public class FrameworkConstants {
     private static final String CONFIGFILEPATH = RESOURCESPATH+"/config/config.properties";
     private static final String EXTENTREPORTSPATH=System.getProperty("user.home")+"/LocalExecution/reports_";
     private static String EXTENTREPORTSFILEPATH="";
+    private static final String EXCELTESTDATAPATH=RESOURCESPATH+"/TestData/TestData.xlsx";
+
+    public static String getExcelTestDataPath() {
+        return EXCELTESTDATAPATH;
+    }
+
+
+
 
     private FrameworkConstants(){
 

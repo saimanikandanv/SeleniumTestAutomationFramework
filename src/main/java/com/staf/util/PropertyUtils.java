@@ -1,6 +1,6 @@
 package com.staf.util;
 
-import com.staf.constants.FrameworkConstants;
+import com.staf.constants.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,9 +11,9 @@ import java.util.Properties;
 /**
  * Created by Saimanikandan V on 03-04-2021
  */
-public class Utils {
+public class PropertyUtils {
 
-    private Utils(){
+    private PropertyUtils(){
 
     }
     private static Properties property=new Properties();

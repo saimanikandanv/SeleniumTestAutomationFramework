@@ -1,12 +1,12 @@
 package com.staf.driver;
 
-import com.staf.constants.FrameworkConstants;
+import com.staf.constants.*;
 import com.staf.enums.PropertyFileEnums;
-import com.staf.util.Utils;
+import com.staf.util.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Objects;
 
-import static com.staf.util.Utils.readPropertyValue;
+import static com.staf.util.PropertyUtils.readPropertyValue;
 
 /**
  * Created by Saimanikandan V on 03-04-2021
@@ -26,7 +26,7 @@ public final class DriverHelper {
                 System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
                 DriverManager.setWebDriver(new ChromeDriver());
                 DriverManager.getWebDriver().manage().window().maximize();
-                DriverManager.getWebDriver().get(Utils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
+                DriverManager.getWebDriver().get(PropertyUtils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
             }
             else if(readPropertyValue(PropertyFileEnums.BROWSER.name().toLowerCase()).equalsIgnoreCase("firefox"))
             {

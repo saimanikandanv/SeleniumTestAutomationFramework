@@ -19,7 +19,7 @@ public class SeleniumFactories {
     }
 
     public static WebElement performExplicitWait(ExplicitWaitConditions waitconditions, By byElement) throws Exception {
-        WebDriverWait wait=new WebDriverWait(DriverManager.getWebDriver(),Integer.parseInt(Utils.readPropertyValue(PropertyFileEnums.EXPLICITWAITTIME.name().toLowerCase())));
+        WebDriverWait wait=new WebDriverWait(DriverManager.getWebDriver(),Integer.parseInt(PropertyUtils.readPropertyValue(PropertyFileEnums.EXPLICITWAITTIME.name().toLowerCase())));
         WebElement element=null;
         switch (waitconditions){
             case ELEMENTTOBECLICKABLE:

@@ -5,7 +5,7 @@ import com.staf.driver.DriverHelper;
 import com.staf.enums.PropertyFileEnums;
 import com.staf.reports.ExtentLogger;
 import com.staf.reports.ExtentReporting;
-import com.staf.util.Utils;
+import com.staf.util.PropertyUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
