@@ -4,6 +4,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.staf.constants.*;
+import com.staf.enums.CategoryType;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +46,17 @@ public final class ExtentReporting {
         }
         ExtentTestManager.removeExtentTest();
         Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilePath()).toURI());
+   }
 
+   public static void addAuthors(String[] authors){
+        for(String s: authors){
+            ExtentTestManager.getExtentTest().assignAuthor(s);
+        }
+   }
+
+    public static void addCategory(CategoryType[] category){
+        for(CategoryType c: category){
+            ExtentTestManager.getExtentTest().assignCategory(c.toString());
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.staf.tests;
 
+import com.staf.annotations.FrameworkAnnotations;
+import com.staf.enums.CategoryType;
 import com.staf.listeners.RetryListener;
 import com.staf.pages.OrangeHRMApplyLeavePage;
 import com.staf.pages.OrangeHRMHomePage;
@@ -14,6 +16,7 @@ import java.util.Map;
  */
 public final class OrangeHRMHomePageTest extends  BaseTest{
 
+    @FrameworkAnnotations(authors = {"SAI"}, category = {CategoryType.REGRESSION,CategoryType.SMOKE})
     @Test
     public void applyLeave(Map<String,String> data) throws Exception {
         OrangeHRMLoginPage loginPage=new OrangeHRMLoginPage();

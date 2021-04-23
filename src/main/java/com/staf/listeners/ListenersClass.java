@@ -1,5 +1,6 @@
 package com.staf.listeners;
 
+import com.staf.annotations.FrameworkAnnotations;
 import com.staf.enums.PropertyFileEnums;
 import com.staf.reports.ExtentLogger;
 import com.staf.reports.*;
@@ -34,6 +35,8 @@ public class ListenersClass implements ITestListener, ISuiteListener {
         try {
             ExtentLogger.info("Launching " +readPropertyValue(PropertyFileEnums.BROWSER.name().toLowerCase()));
             ExtentLogger.info("Launching URL "+readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
+            ExtentReporting.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotations.class).authors());
+            ExtentReporting.addCategory(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotations.class).category());
         } catch (Exception e) {
             e.printStackTrace();
         }
