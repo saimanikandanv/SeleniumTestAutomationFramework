@@ -2,6 +2,7 @@ package com.staf.pages;
 
 import com.staf.driver.DriverManager;
 import com.staf.enums.ExplicitWaitConditions;
+import com.staf.util.EncryptionUtils;
 import com.staf.util.SeleniumFactories;
 import org.openqa.selenium.By;
 import static org.assertj.core.api.Assertions.*;
@@ -21,7 +22,7 @@ public class OrangeHRMLoginPage extends BasePage {
     public OrangeHRMHomePage loginApp(String username, String password) throws Exception {
         SeleniumFactories.performExplicitWait(ExplicitWaitConditions.ELEMENTTOBECLICKABLE,txtUserName);
         sendKeys(txtUserName,"username",username);
-        sendKeys(txtPassword,"password",password);
+        sendKeys(txtPassword,"password", EncryptionUtils.getDecodedString(password));
         click(btnLogin,"Login");
         Thread.sleep(3000);
         return new OrangeHRMHomePage();
