@@ -9,8 +9,7 @@
     </listeners>
     <test verbose="2" preserve-order="true" name="Test" thread-count="2" parallel="methods">
         <classes>
-            <class name="com.staf.tests.OrangeHRMLoginTest"/>
-            <class name="com.staf.tests.OrangeHRMHomePageTest"/>
+            <class name="com.staf.tests.AmazonTests"/>
         </classes>
     </test>
 </suite>

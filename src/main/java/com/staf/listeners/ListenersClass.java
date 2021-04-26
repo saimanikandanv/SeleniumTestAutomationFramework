@@ -33,7 +33,6 @@ public class ListenersClass implements ITestListener, ISuiteListener {
     public void onTestStart(ITestResult result) {
         ExtentReporting.createTest(result.getMethod().getMethodName());
         try {
-            ExtentLogger.info("Launching " +readPropertyValue(PropertyFileEnums.BROWSER.name().toLowerCase()));
             ExtentLogger.info("Launching URL "+readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
             ExtentReporting.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotations.class).authors());
             ExtentReporting.addCategory(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotations.class).category());

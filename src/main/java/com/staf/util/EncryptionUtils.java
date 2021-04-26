@@ -10,7 +10,7 @@ public class EncryptionUtils {
 
     public static String getDecodedString(String encodedString)
     {
-        return new String(Base64.getDecoder().decode(encodedString.getBytes(StandardCharsets.UTF_8)));
+        return new String(Base64.getDecoder().decode(encodedString.getBytes()));
     }
 
 }

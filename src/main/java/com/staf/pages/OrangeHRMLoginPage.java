@@ -22,7 +22,7 @@ public class OrangeHRMLoginPage extends BasePage {
     public OrangeHRMHomePage loginApp(String username, String password) throws Exception {
         SeleniumFactories.performExplicitWait(ExplicitWaitConditions.ELEMENTTOBECLICKABLE,txtUserName);
         sendKeys(txtUserName,"username",username);
-        sendKeys(txtPassword,"password", EncryptionUtils.getDecodedString(password));
+        sendKeys(txtPassword,"password", password);
         click(btnLogin,"Login");
         Thread.sleep(3000);
         return new OrangeHRMHomePage();
