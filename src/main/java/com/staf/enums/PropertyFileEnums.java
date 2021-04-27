@@ -8,5 +8,6 @@ public enum PropertyFileEnums {
     URL,
     BROWSER,
     EXPLICITWAITTIME,
-    RUNMODE
+    RUNMODE,
+    SENDREPORTSTOELK
 }

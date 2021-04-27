@@ -4,6 +4,8 @@ import com.staf.annotations.FrameworkAnnotations;
 import com.staf.enums.PropertyFileEnums;
 import com.staf.reports.ExtentLogger;
 import com.staf.reports.*;
+import com.staf.util.ELKUtils;
+import lombok.SneakyThrows;
 import org.testng.*;
 
 import java.io.IOException;
@@ -41,22 +43,28 @@ public class ListenersClass implements ITestListener, ISuiteListener {
         }
     }
 
+    @SneakyThrows
     @Override
     public void onTestSuccess(ITestResult result) {
         ExtentLogger.pass(result.getMethod().getMethodName() +" is passed");
+        ELKUtils.sendReportstoELK(result.getMethod().getMethodName(),"Pass");
 
     }
 
+    @SneakyThrows
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.fail(result.getMethod().getMethodName() +" is failed");
+        ELKUtils.sendReportstoELK(result.getMethod().getMethodName(),"Fail");
         ExtentLogger.fail(result.getThrowable().toString());
         ExtentLogger.fail(Arrays.toString(result.getThrowable().getStackTrace()));
     }
 
+    @SneakyThrows
     @Override
     public void onTestSkipped(ITestResult result) {
         ExtentLogger.skip(result.getMethod().getMethodName() +" is skipped");
+        ELKUtils.sendReportstoELK(result.getMethod().getMethodName(),"Skip");
     }
 
     @Override

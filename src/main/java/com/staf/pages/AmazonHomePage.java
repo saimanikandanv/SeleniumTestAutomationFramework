@@ -1,7 +1,5 @@
 package com.staf.pages;
 
-
-import com.staf.driver.DriverManager;
 import com.staf.enums.ExplicitWaitConditions;
 import com.staf.util.SeleniumFactories;
 import org.openqa.selenium.By;

@@ -5,7 +5,6 @@ import com.staf.enums.ExplicitWaitConditions;
 import com.staf.reports.ExtentLogger;
 import com.staf.util.SeleniumFactories;
 import org.openqa.selenium.By;
-import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by Saimanikandan V on 04-04-2021

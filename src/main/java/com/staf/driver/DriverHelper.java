@@ -32,16 +32,32 @@ public final class DriverHelper {
             switch(runMode)
             {
                 case "remote":
-                    DesiredCapabilities cap =new DesiredCapabilities();
-                    ChromeOptions options=new ChromeOptions();
-                    options.addArguments("--no-sandbox");
-                    options.addArguments("-disable-dev-shm-usage");
-                    cap.setBrowserName(BrowserType.CHROME);
-                    cap.setCapability(ChromeOptions.CAPABILITY,options);
-                    DriverManager.setWebDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),cap));
-                    DriverManager.getWebDriver().manage().window().maximize();
-                    DriverManager.getWebDriver().get(PropertyUtils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
+                    if(browser.equalsIgnoreCase("chrome"))
+                    {
+                        DesiredCapabilities cap =new DesiredCapabilities();
+                        ChromeOptions options=new ChromeOptions();
+                        options.addArguments("--no-sandbox");
+                        options.addArguments("-disable-dev-shm-usage");
+                        cap.setBrowserName(BrowserType.CHROME);
+                        cap.setCapability(ChromeOptions.CAPABILITY,options);
+                        DriverManager.setWebDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),cap));
+                        DriverManager.getWebDriver().manage().window().maximize();
+                        DriverManager.getWebDriver().get(PropertyUtils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
+                    }
+                    else if(browser.equalsIgnoreCase("firefox"))
+                    {
+                        DesiredCapabilities cap =new DesiredCapabilities();
+                        cap.setBrowserName(BrowserType.FIREFOX);
+                        DriverManager.setWebDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),cap));
+                        DriverManager.getWebDriver().manage().window().maximize();
+                        DriverManager.getWebDriver().get(PropertyUtils.readPropertyValue(PropertyFileEnums.URL.name().toLowerCase()));
+                    }
+                    else
+                    {
+                        throw new RuntimeException("Invalid Browser name only chrome and firefox is supported as of now");
+                    }
                     break;
+
                 case "local":
                     if(browser.equalsIgnoreCase("chrome"))
                     {
