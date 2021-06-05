@@ -3,3 +3,6 @@ demo_job1:
     - ci,staf
   script:
     mvn clean test -DsuiteXmlFile=testng.xml
+  artifacts:
+    paths:
+      - reports/
