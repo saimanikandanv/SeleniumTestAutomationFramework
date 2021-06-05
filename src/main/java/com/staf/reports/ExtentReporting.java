@@ -21,8 +21,7 @@ public final class ExtentReporting {
     private static ExtentReports reports;
     private static ExtentSparkReporter reporter;
 
-    public static void setupReports()
-    {
+    public static void setupReports() throws Exception {
         if(Objects.isNull(reports)){
             reports=new ExtentReports();
             reporter=new ExtentSparkReporter(FrameworkConstants.getExtentReportFilePath());
@@ -39,7 +38,7 @@ public final class ExtentReporting {
         ExtentTestManager.setExtentTest(reports.createTest(testCaseName));
     }
 
-    public static void writeReports() throws  IOException {
+    public static void writeReports() throws Exception {
         if(Objects.nonNull(reports))
         {
             reports.flush();

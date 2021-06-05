@@ -1,9 +1,14 @@
 package com.staf.constants;
 
+import com.staf.enums.PropertyFileEnums;
+import com.staf.util.PropertyUtils;
+import org.apache.poi.hpsf.ClassID;
+
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Saimanikandan V on 03-04-2021
@@ -15,6 +20,7 @@ public final class FrameworkConstants {
     private static final String CHROMEDRIVERPATH =RESOURCESPATH+"/browserExecutables/chromedriver.exe";
     private static final String CONFIGFILEPATH = RESOURCESPATH+"/config/config.properties";
     private static final String EXTENTREPORTSPATH=System.getProperty("user.home")+"/LocalExecution/reports_";
+    private static final String EXTENTREPORTSPATHCICD=System.getProperty("user.dir")+"/reports";
     private static String EXTENTREPORTSFILEPATH="";
     private static final String EXCELTESTDATAPATH=RESOURCESPATH+"/TestData/TestData.xlsx";
 
@@ -35,13 +41,11 @@ public final class FrameworkConstants {
     }
 
 
-
-
     private FrameworkConstants(){
 
     }
 
-    public static String getExtentReportFilePath() {
+    public static String getExtentReportFilePath() throws Exception {
         if(EXTENTREPORTSFILEPATH.isEmpty())
         {
             EXTENTREPORTSFILEPATH=getExtentReportsPath();
@@ -49,17 +53,37 @@ public final class FrameworkConstants {
         return EXTENTREPORTSFILEPATH+"/"+"index.html";
     }
 
-    public static String getExtentReportsPath() {
-        File createFolder=new File(EXTENTREPORTSPATH+getCurrentTimestamp());
-        if(!createFolder.exists())
+    public static String getExtentReportsPath() throws Exception {
+        String CICDFlag= PropertyUtils.readPropertyValue(PropertyFileEnums.CICDFLAG.name().toLowerCase());
+        File createFolder;
+        if(CICDFlag.equalsIgnoreCase("yes"))
         {
-            try
+            createFolder=new File(EXTENTREPORTSPATHCICD);
+            if(!createFolder.exists())
             {
-                createFolder.mkdir();
+                try
+                {
+                    createFolder.mkdir();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
-            catch (Exception e)
+        }
+        else
+        {
+            createFolder=new File(EXTENTREPORTSPATH+getCurrentTimestamp());
+            if(!createFolder.exists())
             {
-                e.printStackTrace();
+                try
+                {
+                    createFolder.mkdir();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
         }
         return createFolder.getAbsolutePath();

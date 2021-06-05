@@ -16,12 +16,14 @@ import static com.staf.util.PropertyUtils.readPropertyValue;
  * Created by Saimanikandan V on 16-04-2021
  */
 public class ListenersClass implements ITestListener, ISuiteListener {
+    @SneakyThrows
     @Override
     public void onStart(ISuite suite) {
         ExtentReporting.setupReports();
 
     }
 
+    @SneakyThrows
     @Override
     public void onFinish(ISuite suite) {
         try {

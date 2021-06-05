@@ -9,5 +9,6 @@ public enum PropertyFileEnums {
     BROWSER,
     EXPLICITWAITTIME,
     RUNMODE,
-    SENDREPORTSTOELK
+    SENDREPORTSTOELK,
+    CICDFLAG
 }
