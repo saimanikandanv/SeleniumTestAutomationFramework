@@ -1,0 +1,5 @@
+demo_job1:
+  tags:
+    - ci,staf
+  script:
+    mvn clean test -DsuiteXmlFile=testng.xml
